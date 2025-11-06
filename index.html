@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Swiss Pass Booster</title>
+  <meta name="description" content="Swiss Pass discounts Geneva 2025">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="font-family:Arial;text-align:center;padding:20px;background:#f8f9fa;">
+  <h1>🇨🇭 Swiss Pass Booster</h1>
+  <p>AI-скидки + секретные маршруты</p>
+  <button onclick="pay()" style="background:#cc0000;color:white;padding:18px;border:none;border-radius:12px;font-size:1.3em;width:90%;margin:20px;">10 CHF — Boost на 30 дней</button>
+  <script>
+    function pay() {
+      window.location = 'twint://pay?amount=10&recipient=+41YOURPHONE'; // ← ТВОЙ НОМЕР
+    }
+  </script>
+</body>
+</html>
