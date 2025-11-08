@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Swiss Pass Booster</title>
   <meta name="description" content="Boost Swiss Pass — скидки на поезда, автобусы, Женева 2025">
-  <script src="https://www.paypal.com/sdk/js?client-id=AZtgjiUdylpTaj2QS0IkpmJkD1nrs8X0P6cQje3d1x9qV5PUQuvtbB6H17jbCHtDDgtyJ3NdW2jaEQ4c&currency=CHF"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AZtgjiUdylpTaj2QS0IkpmJkD1nrs8X0P6cQje3d1x9qV5PUQuvtbB6H17jbCHtDDgtyJ3NdW2jaEQ4c&currency=CHF" crossorigin="anonymous"></script>
   <style>
     body{font-family:Arial;text-align:center;padding:20px;background:#f8f9fa;}
-    h1{color:#0066cc;margin:10px;}
+    h1{color:#0066cc;}
     p{font-size:18px;}
     .btn{margin:30px auto;width:220px;}
   </style>
@@ -19,14 +19,25 @@
   <div id="paypal-button-container" class="btn"></div>
 
   <script>
-    paypal.Buttons({
-      createOrder: () => actions.order.create({
-        purchase_units: [{ amount: { value: '10.00', currency_code: 'CHF' } }]
-      }),
-      onApprove: (data, actions) => actions.order.capture().then(() => {
-        alert('Платёж 10 CHF прошёл! Boost активирован. Спасибо!');
-      })
-    }).render('#paypal-button-container');
+    // Ждём загрузки PayPal
+    if (window.paypal) {
+      initPayPal();
+    } else {
+      document.querySelector('script[src*="paypal"]').addEventListener('load', initPayPal);
+    }
+
+    function initPayPal() {
+      paypal.Buttons({
+        createOrder: function() {
+          return actions.order.create({
+            purchase_units: [{ amount: { value: '10.00', currency_code: 'CHF' } }]
+          });
+        },
+        onApprove: function() {
+          alert('Платёж 10 CHF прошёл! Спасибо!');
+        }
+      }).render('#paypal-button-container');
+    }
   </script>
 </body>
 </html>
