@@ -1,18 +1,32 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Swiss Pass Booster</title>
-  <meta name="description" content="Swiss Pass discounts Geneva 2025">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Boost Swiss Pass — скидки на поезда, автобусы, Женева 2025">
+  <script src="https://www.paypal.com/sdk/js?client-id=AZtgjiUdylpTaj2QS0IkpmJkD1nrs8X0P6cQje3d1x9qV5PUQuvtbB6H17jbCHtDDgtyJ3NdW2jaEQ4c&currency=CHF"></script>
+  <style>
+    body{font-family:Arial;text-align:center;padding:20px;background:#f8f9fa;}
+    h1{color:#0066cc;margin:10px;}
+    p{font-size:18px;}
+    .btn{margin:30px auto;width:220px;}
+  </style>
 </head>
-<body style="font-family:Arial;text-align:center;padding:20px;background:#f8f9fa;">
+<body>
   <h1>🇨🇭 Swiss Pass Booster</h1>
-  <p>AI-скидки + секретные маршруты</p>
-  <button onclick="pay()" style="background:#cc0000;color:white;padding:18px;border:none;border-radius:12px;font-size:1.3em;width:90%;margin:20px;">10 CHF — Boost на 30 дней</button>
+  <p>AI-скидки + секретные маршруты<br><b>10 CHF</b></p>
+  <div id="paypal-button-container" class="btn"></div>
+
   <script>
-    function pay() {
-      window.location = 'twint://pay?amount=10&recipient=+41779931104';
-    }
+    paypal.Buttons({
+      createOrder: () => actions.order.create({
+        purchase_units: [{ amount: { value: '10.00', currency_code: 'CHF' } }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(() => {
+        alert('Платёж 10 CHF прошёл! Boost активирован. Спасибо!');
+      })
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
