@@ -1,42 +1,26 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Swiss Pass Booster</title>
   <meta name="description" content="Boost Swiss Pass — скидки на поезда, автобусы, Женева 2025">
-  <script src="https://www.paypal.com/sdk/js?client-id=AZtgjiUdylpTaj2QS0IkpmJkD1nrs8X0P6cQje3d1x9qV5PUQuvtbB6H17jbCHtDDgtyJ3NdW2jaEQ4c&currency=CHF" crossorigin="anonymous"></script>
   <style>
     body{font-family:Arial;text-align:center;padding:20px;background:#f8f9fa;}
     h1{color:#0066cc;}
     p{font-size:18px;}
-    .btn{margin:30px auto;width:220px;}
+    .btn{margin:30px auto;width:220px;height:50px;background:#0070ba;color:white;border:none;border-radius:8px;font-size:18px;cursor:pointer;}
   </style>
 </head>
 <body>
-  <h1>🇨🇭 Swiss Pass Booster</h1>
+  <h1>Swiss Booster</h1>
   <p>AI-скидки + секретные маршруты<br><b>10 CHF</b></p>
-  <div id="paypal-button-container" class="btn"></div>
+  <button class="btn" onclick="openPayPal()">ОПЛАТИТЬ 10 CHF</button>
 
   <script>
-    // Ждём загрузки PayPal
-    if (window.paypal) {
-      initPayPal();
-    } else {
-      document.querySelector('script[src*="paypal"]').addEventListener('load', initPayPal);
-    }
-
-    function initPayPal() {
-      paypal.Buttons({
-        createOrder: function() {
-          return actions.order.create({
-            purchase_units: [{ amount: { value: '10.00', currency_code: 'CHF' } }]
-          });
-        },
-        onApprove: function() {
-          alert('Платёж 10 CHF прошёл! Спасибо!');
-        }
-      }).render('#paypal-button-container');
+    function openPayPal() {
+      const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=swisspass2025@gmail.com&amount=10.00&currency_code=CHF&item_name=Swiss+Pass+Booster&return=https://swisspassbooster.vercel.app/success&cancel_return=https://swisspassbooster.vercel.app`;
+      window.open(url, '_blank');
     }
   </script>
 </body>
