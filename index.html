@@ -1,53 +1,60 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Оплата доступа — 10 CHF</title>
+  <title>Swiss Pass Booster 2025</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    .pay-button {
-      display: inline-block;
-      background-color: #0070ba;
-      color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-    .pay-button:hover {
-      background-color: #005ea6;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f8f8f8; }
+    h1 { font-size: 28px; color: #d32f2f; }
+    p { font-size: 18px; color: #333; }
+    .btn { display: inline-block; margin: 20px; padding: 15px 30px; background: #1976d2; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    .btn:hover { background: #1565c0; }
+    .lang { margin: 20px 0; font-size: 16px; }
   </style>
 </head>
 <body>
 
-  <h1>Получите доступ к материалам</h1>
-  <p>Оплатите <strong>10 CHF</strong> через PayPal:</p>
+  <h1>SWISS PASS BOOSTER 2025</h1>
+  <p><strong>Save 200+ CHF</strong> on trains, buses, museums & mountains</p>
+  <p>7 proven hacks · PDF in English & Français</p>
 
-  <a href="https://drive.google.com/uc?export=download&id=1Nl-IEpt5svlTiOPeToMZ858ugAQt_MG" target="_blank">
-  Pay 10 CHF & Download PDF
-</a>
+  <div class="lang">
+    <strong>🇬🇧 English</strong> | <a href="#fr">🇫🇷 Français</a>
+  </div>
 
-  <p style="margin-top: 40px; font-size: 14px; color: #777;">
-    После оплаты доступ будет отправлен на email.
-  </p>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="ТВОЙ_PAYPAL_EMAIL@gmail.com">
+    <input type="hidden" name="item_name" value="Swiss Pass Booster PDF">
+    <input type="hidden" name="amount" value="10.00">
+    <input type="hidden" name="currency_code" value="CHF">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" style="border:0;" alt="Pay with PayPal">
+  </form>
+
+  <p>After payment, PDF will be sent to your email instantly.</p>
+
+  <!-- FRENCH VERSION -->
+  <div id="fr" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #ddd;">
+    <h1>SWISS PASS BOOSTER 2025</h1>
+    <p><strong>Économisez 200+ CHF</strong> sur trains, bus, musées & montagnes</p>
+    <p>7 astuces prouvées · PDF en Français & English</p>
+
+    <div class="lang">
+      <a href="#">🇬🇧 English</a> | <strong>🇫🇷 Français</strong>
+    </div>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="ТВОЙ_PAYPAL_EMAIL@gmail.com">
+      <input type="hidden" name="item_name" value="Swiss Pass Booster PDF">
+      <input type="hidden" name="amount" value="10.00">
+      <input type="hidden" name="currency_code" value="CHF">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" style="border:0;" alt="Pay with PayPal">
+    </form>
+
+    <p>Après paiement, le PDF sera envoyé par email immédiatement.</p>
+  </div>
 
 </body>
 </html>
