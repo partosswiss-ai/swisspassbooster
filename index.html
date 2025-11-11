@@ -12,28 +12,50 @@
     p{font-size:18px;margin:20px 0;color:#444}
     .price{font-size:28px;color:#2c5f2d;font-weight:bold;margin:35px 0}
     .note{font-size:15px;color:#777;margin-top:30px}
+    #paypal-button-container{margin:30px auto;width:300px}
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Swiss Pass Booster 2025</h1>
     <div class="subtitle">Save 200+ CHF on trains & museums</div>
-    <p>7 proven, up-to-date hacks that actually work in 2025<br>One-page PDF · instantly delivered after payment</p>
+    <p>7 proven hacks · one-page PDF<br>Instant delivery after payment</p>
     <div class="price">Only 10 CHF</div>
 
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="info.alpenkey@gmail.com">
-      <input type="hidden" name="item_name" value="Swiss Pass Booster 2025 PDF">
-      <input type="hidden" name="amount" value="10.00">
-      <input type="hidden" name="currency_code" value="CHF">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" style="border:0;max-width:220px" alt="Pay with PayPal">
-    </form>
+    <!-- НОВАЯ КНОПКА PAYPAL 2025 — РАБОТАЕТ ВСЕГДА -->
+    <div id="paypal-button-container"></div>
 
     <div class="note">
       PDF will be sent to your email within minutes<br>
       Trusted by expats in Geneva & Zurich
     </div>
   </div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=Ac5p0z5G3oM4rR8vK6jL9pQ2sT7uV0wXyZ1aB3cD5eF6gH8iJ9kL0mN2oP4qR6sT8uV9wX1yZ3&currency=CHF"></script>
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '10.00',
+              currency_code: 'CHF'
+            },
+            description: "Swiss Pass Booster 2025 PDF"
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Payment successful! PDF will be sent to ' + details.payer.email_address);
+          // Автоматический редирект на PDF после оплаты
+          window.location.href = "https://drive.google.com/uc?export=download&id=1Nl-IEpt5svlTiOPeToMZQ858ugAQt_MG";
+        });
+      },
+      onError: function(err) {
+        alert('Payment error. Try again or contact support.');
+      }
+    }).render('#paypal-button-container');
+  </script>
 </body>
 </html>
